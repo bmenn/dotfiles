@@ -20,5 +20,9 @@ lnif $DOTFILES/tmux/tmux-osx.conf $HOME/.tmux-osx.conf
 lnif $DOTFILES/vimrc $HOME/.vimrc
 lnif $DOTFILES/vim $HOME/.vim
 
+if [! -e $DOTFILES/vim/bundle/Vundle.vim/autoload ]; then
+        git clone https://github.com/gmarik/Vundle.vim $DOTFILES/vim/bundle/Vundle.vim
+fi
+
 echo "Update/Install plugins using vundle"
 vim -u $DOTFILES/vimrc +BundleInstall! +BundleClean +qall
