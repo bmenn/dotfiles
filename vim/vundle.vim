@@ -15,6 +15,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
+Plugin 'altercation/vim-colors-solarized'
 
 " Python stuff
 Plugin 'klen/python-mode'
