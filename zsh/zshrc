@@ -1,0 +1,211 @@
+#ANDROID_SDK_TOOLS=$HOME/build/android-sdk-linux/tools
+#ANDROID_SDK_PLAT_TOOLS=$HOME/build/android-sdk-linux/platform-tools
+ANDROID_SDK_TOOLS=/opt/android-sdk/tools
+ANDROID_SDK_PLAT_TOOLS=/opt/android-sdk/platform-tools
+AWS_BEANSTALK=$HOME/AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7
+PATH=$HOME/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.1.0/bin:$HOME/.cabal/bin:$PATH
+PATH=$PATH:$ANDROID_SDK_TOOLS
+PATH=$PATH:$ANDROID_SDK_PLAT_TOOLS
+export PATH
+
+# Powerline
+. ~/.local/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
+
+autoload -U colors; colors
+
+### Default apps ##############################################################
+
+export SHELL="/bin/zsh"
+export EDITOR="/usr/bin/vim"
+export PAGER="/usr/bin/less"
+export IMAGEVIEWER="/usr/bin/feh"
+export PDFVIEWER="/usr/bin/zathura"
+export MUSIC="/usr/bin/ncmpcpp"
+export RADIO="internet-radio"
+export OOOffice="/usr/bin/soffice"
+export BROWSER="/usr/bin/chromium"
+export MEDIAPLAYER="/usr/bin/mplayer"
+
+# Proxy settings
+#export http_proxy=http://127.0.0.1:8118/
+#export HTTP_PROXY=$http_proxy
+
+export GDK_USE_XFT=1
+export QT_XFT=true
+
+### Set options ###############################################################
+
+setopt NO_BEEP
+
+# Number of lines kept in history
+export HISTSIZE=1000
+# Number of lines saved in the history after logout
+export SAVEHIST=1000
+# Location of history
+export HISTFILE=~/.zsh_history
+# Append command to history file once executed
+setopt SHARE_HISTORY
+# Extra history options
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_NO_STORE
+setopt NO_HIST_BEEP
+
+# Tab completion
+autoload -U compinit promptinit
+compinit
+promptinit
+
+# Autocompletion with arrow-key menu
+zstyle ':completion:*' menu select
+
+# virtualenvwrapper
+export WORKON_HOME=~/.virtualenv
+export PROJECT_HOME=~/projects
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+source /usr/bin/virtualenvwrapper.sh
+
+### Key bindings ##############################################################
+# http://mundy.yazzy.org/unix/zsh.php
+# http://www.zsh.org/mla/users/2000/msg00727.html
+#
+# bindkey  '\e[3~' delete-char
+#          ^      ^-- Here i typed del<TAB> and got a list of possible functions.
+#          '-- Here I pressed <ctrl>-v-<delete>
+
+bindkey -v
+bindkey '^[[3~' delete-char
+bindkey '^?' backward-delete-char
+bindkey '^[[7~' beginning-of-line
+bindkey '^[[8~' end-of-line
+
+### Colorize man pages ########################################################
+
+export LESS_TERMCAP_mb=$'\e[1;31m'
+export LESS_TERMCAP_md=$'\e[1;31m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[1;44;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;32m'
+
+### Java settings #############################################################
+
+#export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
+#export _JAVA_OPTIONS='-Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel' 
+export JAVA_FONTS=/usr/share/fonts/TTF
+
+### Wine settings #############################################################
+
+export WINEPREFIX=~/.wine32
+
+### Aliases ###################################################################
+
+# Command aliases
+alias ls='ls --color=auto'
+alias lsa='ls -a --color=auto'
+alias lsl='ls -lh --color=auto'
+alias lsla='ls -alh --color=auto'
+alias mv='nocorrect mv -i'
+alias cp='nocorrect cp -i'
+alias rm='rm -i'
+alias rmf='rm -f'
+alias make='make -j9'
+alias grep='grep --color=auto'
+alias remind='remind ~/.reminders'
+alias vim='vim -p'
+alias df='df -h'
+alias du='du -h'
+alias bc='bc -l'
+alias t='todo.sh'
+alias less='less -r'
+alias eb='python2 ~/AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7/eb'
+alias gcalcli='gcalcli --configFolder ~/.config/gcalcli'
+#alias pdflatex='pdflatex --output-directory=/tmp'
+
+alias music=$MUSIC
+alias radio=$RADIO
+alias xp='xprop | grep "WM_WINDOW_ROLE\|WM_CLASS" && echo "WM_CLASS(STRING) = \"NAME\", \"CLASS\""'
+
+# Suffix aliases for files
+
+alias -s c=$EDITOR
+alias -s cpp=$EDITOR
+alias -s h=$EDITOR
+#alias -s py=$EDITOR
+alias -s txt=$EDITOR
+alias -s tex=$EDITOR
+
+alias -s pdf=$PDFVIEWER
+alias -s odt=$OOOffice
+alias -s ods=$OOOffice
+alias -s doc=$OOOffice
+alias -s xls=$OOOffice
+
+alias -s jpg=$IMAGEVIEWER
+alias -s jpeg=$IMAGEVIEWER
+alias -s gif=$IMAGEVIEWER
+alias -s png=$IMAGEVIEWER
+
+alias -s flac=$MEDIAPLAYER
+alias -s mp3=$MEDIAPLAYER
+alias -s m4a=$MEDIAPLAYER
+alias -s ogg=$MEDIAPLAYER
+alias -s wmv=$MEDIAPLAYER
+
+alias -s avi=$MEDIAPLAYER
+alias -s mpg=$MEDIAPLAYER
+alias -s flv=$MEDIAPLAYER
+alias -s m4v=$MEDIAPLAYER
+
+### Functions #################################################################
+# Usage: extract <file>
+# Description: extracts archived files (maybe)
+function extract () {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)  tar -xvf $1        ;;
+            *.tar.gz)   tar -xvf $1        ;;
+            *.bz2)      bzip2 -d $1         ;;
+            *.gz)       gunzip -d $1        ;;
+            *.tar)      tar -xvf $1         ;;
+            *.tgz)      tar -zxvf $1        ;;
+            *.zip)      unzip $1            ;;
+            *.Z)        uncompress $1       ;;
+            *.rar)      unrar x $1            ;;
+            *)          echo "'$1' Error. Please go away" ;;
+        esac
+        else
+            echo "'$1' is not a valid file"
+    fi
+}
+
+# Usage: show-archive <archive>
+# Description: view archive without unpack
+function show-archive() {
+    if [ -f $1 ]; then
+        case $1 in
+            *.tar.bz2)     tar -jtf $1 ;;
+            *.tar.gz)      tar -ztf $1 ;;
+            *.tar)         tar -tf $1  ;;
+            *.tgz)         tar -ztf $1 ;;
+            *.zip)         unzip -l $1 ;;
+            *.rar)         rar vb $1   ;;
+            *)             echo "'$1' Error. Please go away" ;;
+        esac
+        else
+            echo "'$1' is not a valid archive"
+    fi
+}
+
+# Usage: battery
+# Description: Get battery info.
+function battery {
+    if which acpi > /dev/null; then
+        bat=`acpitool -B | awk '/Remaining capacity/' | sed 's/,//g' | awk '{print $5" ("$6")"}'`
+        if [ -z $bat ]; then
+            bat="Unknown"
+        fi
+        echo $bat
+    fi
+}
