@@ -17,12 +17,14 @@ lnif $DOTFILES/tmux/tmux-linux.conf $HOME/.tmux-linux.conf
 lnif $DOTFILES/tmux/tmux-osx.conf $HOME/.tmux-osx.conf
 
 # vim
+mkdir -p $HOME/.vim/bundle
 lnif $DOTFILES/vimrc $HOME/.vimrc
-lnif $DOTFILES/vim $HOME/.vim
+lnif $DOTFILES/vim/vundle.vim $HOME/.vim/vundle.vim
+lnif $DOTFILES/vim/after $HOME/.vim/after
 
-if [ ! -e $DOTFILES/vim/bundle/Vundle.vim/autoload ]; then
+if [ ! -e $HOME/.vim/bundle/Vundle.vim/autoload ]; then
         echo "Installing Vundle"
-        git clone https://github.com/gmarik/Vundle.vim $DOTFILES/vim/bundle/Vundle.vim
+        git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
 fi
 
 echo "Update/Install plugins using vundle"
