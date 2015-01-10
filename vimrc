@@ -17,7 +17,7 @@ filetype plugin indent on
 
 " ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.csv
+set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv
 
 " pymode
 let g:pymode_rope = 1
