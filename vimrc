@@ -26,7 +26,7 @@ let g:pymode_rope_complete_on_dot = 0
 let g:pymode_doc = 0
 
 " globsearch otions
-set wildignore+=*.pdf,*.epub,*.gnucash
+set wildignore+=*.pdf,*.epub,*.gnucash,*.pyc
 
 " tagbar
 let g:tagbar_type_markdown = {
