@@ -26,6 +26,7 @@ Plugin 'derekwyatt/vim-scala'
 
 " HTML/JS/CSS stuff
 Plugin 'mattn/emmet-vim'
+Plugin 'elzr/vim-json'
 
 " Markdown stuff
 Plugin 'godlygeek/tabular'

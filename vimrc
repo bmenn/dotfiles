@@ -29,6 +29,8 @@ let g:pymode_doc = 0
 set wildignore+=*.pdf,*.epub,*.gnucash,*.pyc
 
 " tagbar
+let g:tagbar_autofocus = 1
+let g:tagbar_autoclose = 1
 let g:tagbar_type_markdown = {
     \ 'ctagstype': 'markdown',
     \ 'ctagsbin' : '~/.local/bin/markdown2ctags.py',
