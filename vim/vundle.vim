@@ -16,6 +16,9 @@ Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'bmenn/vim-colors-solarized'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'tpope/vim-fugitive'
 
 " Python stuff
 Plugin 'klen/python-mode'

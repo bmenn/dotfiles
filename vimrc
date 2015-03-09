@@ -17,7 +17,7 @@ filetype plugin indent on
 
 " ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
-set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv
+set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc
 
 " pymode
 let g:pymode_rope = 1
@@ -43,8 +43,11 @@ let g:tagbar_type_markdown = {
     \ },
     \ 'sort': 0,
 \ }
+"
 " ctags
 set tags=./.tags,.tags
+let g:easytags_auto_update = 0
+let g:easytags_auto_highlight = 0
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
