@@ -19,6 +19,7 @@ Plugin 'bmenn/vim-colors-solarized'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
 
 " Python stuff
 Plugin 'klen/python-mode'
