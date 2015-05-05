@@ -22,7 +22,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 
 " Python stuff
-Plugin 'klen/python-mode'
+"Plugin 'klen/python-mode'
+Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'Jinja'
 
 " Scala

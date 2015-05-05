@@ -5,6 +5,8 @@ set laststatus=2
 " Load Powerline
 if isdirectory(expand("$HOME/.local/lib/python3.4/site-packages/powerline/bindings/vim"))
         set rtp+=~/.local/lib/python3.4/site-packages/powerline/bindings/vim
+elseif isdirectory(expand("$HOME/Library/Python/3.4/lib/python/site-packages/powerline/bindings/vim"))
+	set rtp+=~/Library/Python/3.4/lib/python/site-packages/powerline/bindings/vim
 elseif isdirectory(expand("$HOME/.local/lib/python2.6/site-packages/powerline/bindings/vim"))
         set rtp+=~/.local/lib/python2.6/site-packages/powerline/bindings/vim
 endif
@@ -13,6 +15,9 @@ if filereadable(expand("~/.vim/vundle.vim"))
         source ~/.vim/vundle.vim
 endif
 
+" Strip trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
 filetype plugin indent on
 
 " ctrlp
@@ -20,11 +25,17 @@ let g:ctrlp_match_window = 'top,order:ttb'
 set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc
 
 " pymode
-let g:pymode_rope = 1
-let g:pymode_rope_autoimport = 0
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_complete_on_dot = 0
-let g:pymode_doc = 0
+" let g:pymode_rope = 1
+" let g:pymode_rope_autoimport = 0
+" let g:pymode_rope_lookup_project = 0
+" let g:pymode_rope_complete_on_dot = 0
+" let g:pymode_doc = 0
+" let g:pymode_lint_checkers = ['pylint', 'pep8', 'mccabe']
+" let g:pymode_lint_cwindow = 1
+
+" syntastic
+let g:syntastic_python_checkers=['pylint', 'pep8', 'python']
+let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: {msg_id} [{symbol}] {msg}"'
 
 " tagbar
 let g:tagbar_autofocus = 1
@@ -82,7 +93,7 @@ endif
 
 set number
 set ignorecase
-set cursorline 
+set cursorline
 set colorcolumn=76
 set textwidth=76
 set expandtab
