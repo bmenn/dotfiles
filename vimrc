@@ -22,7 +22,8 @@ filetype plugin indent on
 
 " ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
-set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc
+let g:ctrlp_extensions = ['tag', 'mixed']
+set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,tags,*.class
 
 " pymode
 " let g:pymode_rope = 1
@@ -35,6 +36,7 @@ set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc
 
 " syntastic
 let g:syntastic_python_checkers=['pylint', 'pep8', 'python']
+" let g:syntastic_python_pylint_exec = 'PYTHONPATH=' + getcwd() + ' pylint'
 let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: {msg_id} [{symbol}] {msg}"'
 
 " tagbar
@@ -56,7 +58,7 @@ let g:tagbar_type_markdown = {
 \ }
 "
 " ctags
-set tags=./.tags,.tags
+set tags=./tags,tags
 let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 
