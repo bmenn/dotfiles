@@ -20,11 +20,17 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Yggdroot/indentLine'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
 
 " Python stuff
 "Plugin 'klen/python-mode'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'Jinja'
+Plugin 'davidhalter/jedi'
 
 " Scala
 Plugin 'derekwyatt/vim-scala'
@@ -32,6 +38,7 @@ Plugin 'derekwyatt/vim-scala'
 " HTML/JS/CSS stuff
 Plugin 'mattn/emmet-vim'
 Plugin 'elzr/vim-json'
+Plugin 'marijnh/tern_for_vim'
 
 " Markdown stuff
 Plugin 'godlygeek/tabular'
