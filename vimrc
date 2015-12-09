@@ -23,6 +23,10 @@ filetype plugin indent on
 " ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
 let g:ctrlp_extensions = ['tag', 'mixed']
+let g:ctrlp_max_files = 0
+let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_root_markers = ['pom.xml']
+let g:ctrlp_working_path_mode = 'wr'
 set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,tags,*.class
 
 " syntastic
@@ -48,17 +52,31 @@ let g:tagbar_type_markdown = {
 \ }
 "
 " ctags
-set tags=./tags,tags
+set tags=../tags,./tags,tags
 let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<C-j>"
-let g:UltiSnipsJumpForwardTrigger="<C-b>"
-let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+let g:UltiSnipsJumpForwardTrigger="<C-l>"
+let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
+
+" dbext
+let g:dbext_default_profile_mysql_prod1 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod1-reader'
+let g:dbext_default_profile_mysql_prod1_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod1-writer'
+let g:dbext_default_profile_mysql_prod2 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod2-reader'
+let g:dbext_default_profile_mysql_prod2_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod2-writer'
+let g:dbext_default_profile_mysql_prod3 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod3-reader'
+let g:dbext_default_profile_mysql_prod3_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod3-writer'
+
+" vim-rooter
+" let g:rooter_patterns = ['pom.xml', '.git', '.git/']
+
+" Change configuration type files to correct syntax
+autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -66,7 +84,8 @@ if has('mouse')
 endif
 
 " Clipboard support (for OS X only?)
-set clipboard=unnamed
+" Empty equals is intentional
+set clipboard=
 
 set writebackup	" keep a write backup file
 set ruler       " show the cursor position all the time
