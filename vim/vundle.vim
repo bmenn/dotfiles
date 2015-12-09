@@ -25,6 +25,8 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
+" Plugin 'airblade/vim-rooter'
+Plugin 'DataWraith/auto_mkdir'
 
 " Python stuff
 "Plugin 'klen/python-mode'
