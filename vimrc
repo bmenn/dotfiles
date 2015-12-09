@@ -3,12 +3,12 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set laststatus=2
 
 " Load Powerline
-if isdirectory(expand("$HOME/.local/lib/python3.4/site-packages/powerline/bindings/vim"))
-        set rtp+=~/.local/lib/python3.4/site-packages/powerline/bindings/vim
+if isdirectory(expand("$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim"))
+        set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
+elseif isdirectory(expand("/usr/lib/python3.5/site-packages/powerline/bindings/vim"))
+        set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim
 elseif isdirectory(expand("$HOME/Library/Python/3.4/lib/python/site-packages/powerline/bindings/vim"))
 	set rtp+=~/Library/Python/3.4/lib/python/site-packages/powerline/bindings/vim
-elseif isdirectory(expand("$HOME/.local/lib/python2.6/site-packages/powerline/bindings/vim"))
-        set rtp+=~/.local/lib/python2.6/site-packages/powerline/bindings/vim
 endif
 
 if filereadable(expand("~/.vim/vundle.vim"))
