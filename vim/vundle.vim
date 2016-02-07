@@ -56,7 +56,8 @@ Plugin 'dbext.vim'
 " Notetaking stuff
 Plugin 'freitass/todo.txt-vim'
 Plugin 'LanguageTool'
-Plugin 'neilagabriel/vim-geeknote'
+" No Python 3 support
+" Plugin 'neilagabriel/vim-geeknote'
 
 " Old stuff
 "Bundle 'wookiehangover/jshint.vim'
