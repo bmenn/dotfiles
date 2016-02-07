@@ -27,6 +27,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
 " Plugin 'airblade/vim-rooter'
 Plugin 'DataWraith/auto_mkdir'
+Plugin 'tpope/vim-surround'
 
 " Python stuff
 "Plugin 'klen/python-mode'
@@ -36,6 +37,7 @@ Plugin 'davidhalter/jedi'
 
 " Scala
 Plugin 'derekwyatt/vim-scala'
+Plugin 'ensime/ensime-vim'
 
 " HTML/JS/CSS stuff
 Plugin 'mattn/emmet-vim'
@@ -58,6 +60,5 @@ Plugin 'neilagabriel/vim-geeknote'
 
 " Old stuff
 "Bundle 'wookiehangover/jshint.vim'
-"Bundle 'tpope/vim-surround'
 
 call vundle#end()

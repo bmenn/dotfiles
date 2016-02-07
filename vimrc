@@ -1,14 +1,17 @@
 set nocompatible
 set rtp+=~/.vim/bundle/Vundle.vim
 set laststatus=2
+set encoding=utf8
 
 " Load Powerline
+if !has('nvim')
 if isdirectory(expand("$HOME/.local/lib/python3.4/site-packages/powerline/bindings/vim"))
         set rtp+=~/.local/lib/python3.4/site-packages/powerline/bindings/vim
 elseif isdirectory(expand("$HOME/Library/Python/3.4/lib/python/site-packages/powerline/bindings/vim"))
 	set rtp+=~/Library/Python/3.4/lib/python/site-packages/powerline/bindings/vim
 elseif isdirectory(expand("$HOME/.local/lib/python2.6/site-packages/powerline/bindings/vim"))
         set rtp+=~/.local/lib/python2.6/site-packages/powerline/bindings/vim
+endif
 endif
 
 if filereadable(expand("~/.vim/vundle.vim"))
@@ -26,6 +29,8 @@ let g:ctrlp_extensions = ['tag', 'mixed']
 let g:ctrlp_max_files = 0
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_root_markers = ['pom.xml']
+" May need to add a fallback
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_working_path_mode = 'wr'
 set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,tags,*.class
 
@@ -71,6 +76,12 @@ let g:dbext_default_profile_mysql_prod2 = 'type=MYSQL:extra=--defaults-file=~/my
 let g:dbext_default_profile_mysql_prod2_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod2-writer'
 let g:dbext_default_profile_mysql_prod3 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod3-reader'
 let g:dbext_default_profile_mysql_prod3_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod3-writer'
+let g:dbext_default_profile_mysql_prod6 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod6-reader'
+let g:dbext_default_profile_mysql_prod6_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod6-writer'
+let g:dbext_default_profile_mysql_iprod1 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod1-reader'
+let g:dbext_default_profile_mysql_iprod1_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod1-writer'
+let g:dbext_default_profile_mysql_iprod2 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod2-reader'
+let g:dbext_default_profile_mysql_iprod2_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod2-writer'
 
 " vim-rooter
 " let g:rooter_patterns = ['pom.xml', '.git', '.git/']
@@ -140,5 +151,8 @@ let @a = ''
         g/^$/d
         sort
 endfunction
+
+" Toggle NERDTree
+map <C-n> :NERDTreeToggle<CR>
 
 command! -nargs=1 Filter call Filter(<f-args>)
