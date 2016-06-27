@@ -37,7 +37,7 @@ Plugin 'davidhalter/jedi'
 
 " Scala
 Plugin 'derekwyatt/vim-scala'
-Plugin 'ensime/ensime-vim'
+"Plugin 'ensime/ensime-vim'
 
 " HTML/JS/CSS stuff
 Plugin 'mattn/emmet-vim'

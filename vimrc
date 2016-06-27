@@ -37,8 +37,16 @@ let g:ctrlp_working_path_mode = 'wr'
 set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,tags,*.class
 
 " syntastic
-let g:syntastic_python_checkers=['pylint', 'pep8', 'python']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_debug = 0
+let g:syntastic_python_checkers = ['pylint', 'pep8', 'python']
 let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: {msg_id} [{symbol}] {msg}"'
+let g:syntastic_scala_checkers = ['scalac', 'scalastyle']
+let g:syntastic_scala_scalastyle_jar = expand('$HOME/.local/bin/scalastyle_2.10-0.8.0-batch.jar')
+let g:syntastic_scala_scalastyle_config_file = expand('$HOME/.scalastyle_config.xml')
 
 " tagbar
 let g:tagbar_autofocus = 1
@@ -64,6 +72,8 @@ let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 
 " ultisnips
+let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips", "UltiSnips"]
+let g:ultisnips_python_quoting_style="single"
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
@@ -153,6 +163,9 @@ let @a = ''
         g/^$/d
         sort
 endfunction
+
+" CtrlP buffer is really useful
+map  <leader>b :CtrlPBuffer<CR>
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
