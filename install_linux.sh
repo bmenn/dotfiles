@@ -13,8 +13,9 @@ lnif() {
 
 # tmux
 lnif $DOTFILES/tmux/tmux.conf $HOME/.tmux.conf
-lnif $DOTFILES/tmux/tmux-linux.conf $HOME/.tmux-linux.conf
-lnif $DOTFILES/tmux/tmux-osx.conf $HOME/.tmux-osx.conf
+mkdir -p $HOME/.tmux
+lnif $DOTFILES/tmux/tmux-linux.conf $HOME/.tmux/tmux-linux.conf
+lnif $DOTFILES/tmux/tmux-osx.conf $HOME/.tmux/tmux--osx.conf
 
 # vim
 mkdir -p $HOME/.vim/bundle
