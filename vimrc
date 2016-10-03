@@ -66,7 +66,9 @@ let g:tagbar_type_markdown = {
     \ },
     \ 'sort': 0,
 \ }
-"
+" NERDTree
+let NERDTreeIgnore=['.pyc$', '^__pycache__$']
+
 " ctags
 set tags=../tags,./tags,tags
 let g:easytags_auto_update = 0
