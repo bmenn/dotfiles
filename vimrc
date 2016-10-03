@@ -1,4 +1,5 @@
 set nocompatible
+set modelines=5
 set rtp+=~/.vim/bundle/Vundle.vim
 set laststatus=2
 set encoding=utf8
