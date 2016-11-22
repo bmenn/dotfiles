@@ -1,0 +1,21 @@
+keycode 121 = XF86AudioMute NoSymbol XF86AudioMute
+keycode 122 = XF86AudioLowerVolume NoSymbol XF86AudioLowerVolume
+keycode 123 = XF86AudioRaiseVolume NoSymbol XF86AudioRaiseVolume
+keycode 169 = XF86Eject NoSymbol XF86Eject
+keycode 170 = XF86Eject XF86Eject XF86Eject XF86Eject
+keycode 171 = XF86AudioNext NoSymbol XF86AudioNext
+keycode 172 = XF86AudioPlay NoSymbol XF86AudioPlay
+keycode 173 = XF86AudioPrev NoSymbol XF86AudioPrev
+keycode 174 = XF86AudioStop NoSymbol XF86AudioStop
+keycode 175 = XF86AudioRecord NoSymbol XF86AudioRecord
+keycode 176 = XF86AudioRewind NoSymbol XF86AudioRewind
+keycode 209 = XF86AudioPause NoSymbol XF86AudioPause
+keycode 215 = XF86AudioPlay NoSymbol XF86AudioPlay
+keycode 216 = XF86AudioForward NoSymbol XF86AudioForward
+! Natual scrolling, aka touchscreen or OS X scrolling
+pointer = 1 2 3 5 4 7 6 8 9 10 11 12
+
+! Map Caps Lock to Control
+keycode 66 = Control_L
+clear Lock
+add Control = Control_L
