@@ -34,3 +34,7 @@ fi
 
 echo "Update/Install plugins using vundle"
 vim -u $DOTFILES/vimrc +BundleInstall! +BundleClean +qall
+
+# xbindkeys
+# Remap Cap-Locks to control
+lnif $DOTFILES/xbindkeysrc $HOME/.xbindkeysrc
