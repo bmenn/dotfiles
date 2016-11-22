@@ -14,7 +14,8 @@ export CUDA_HOME=/opt/cuda
 . /home/silent/build/z/z.sh
 
 # Powerline
-. /home/silent/.local/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh
+PYTHON3_USER_LIB="$HOME/.local/lib/$(python3 --version | sed 's/.*/\L&/;s/ \([0-9]\+\.[0-9]\+\)\.[0-9]\+/\1/')"
+. $PYTHON3_USER_LIB/site-packages/powerline/bindings/zsh/powerline.zsh
 
 autoload -U colors; colors
 
