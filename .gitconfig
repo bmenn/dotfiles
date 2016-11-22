@@ -1,0 +1,15 @@
+[credential]
+	help = cache
+[http]
+	sslVerify = false
+[core]
+	excludesfile = /home/silent/.gitignore
+[push]
+	default = simple
+[user]
+	email = bryant.menn@gmail.com
+	name = Bryant Menn
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true

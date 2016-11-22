@@ -38,3 +38,6 @@ vim -u $DOTFILES/vimrc +BundleInstall! +BundleClean +qall
 # xbindkeys
 # Remap Cap-Locks to control
 lnif $DOTFILES/xbindkeysrc $HOME/.xbindkeysrc
+
+# gitconfig
+lnif $DOTFILES/gitconfig $HOME/.gitconfig
