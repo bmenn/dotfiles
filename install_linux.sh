@@ -68,6 +68,9 @@ fi
 echo "Update/Install plugins using vundle"
 vim -u $DOTFILES/vimrc +BundleInstall! +BundleClean +qall
 
+# jupyter
+lnif $DOTFILES/jupyter/nbextensions $HOME/.local/share/jupyter/nbextensions
+
 # xmodmap
 # Remap Cap-Locks to control
 NOTES=$(cat << EOF
