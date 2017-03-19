@@ -3,7 +3,7 @@
 [http]
 	sslVerify = false
 [core]
-	excludesfile = /home/silent/.gitignore
+	excludesfile = ~/.gitignore
 [push]
 	default = simple
 [user]
