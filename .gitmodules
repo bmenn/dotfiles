@@ -1,3 +1,6 @@
 [submodule "jupyter/nbextensions/vim_binding"]
 	path = jupyter/nbextensions/vim_binding
 	url = https://github.com/lambdalisue/jupyter-vim-binding
+[submodule "marker"]
+	path = marker
+	url = https://github.com/pindexis/marker
