@@ -91,4 +91,7 @@ lnif $DOTFILES/gitconfig $HOME/.gitconfig
 git clone https://github.com/rupa/z $DOTFILES/external/z
 lnif $DOTFILES/external/z/z.sh $HOME/.local/bin/z
 
+# install marker
+python ${DOTFILES}/marker/install.py
+
 echo ${NOTES}

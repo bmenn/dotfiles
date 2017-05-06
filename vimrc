@@ -31,7 +31,7 @@ let g:ctrlp_match_window = 'top,order:ttb'
 let g:ctrlp_extensions = ['tag', 'mixed']
 let g:ctrlp_max_files = 0
 let g:ctrlp_clear_cache_on_exit = 1
-let g:ctrlp_root_markers = ['pom.xml']
+let g:ctrlp_root_markers = ['.git', 'pom.xml']
 " May need to add a fallback
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_working_path_mode = 'wr'
@@ -98,6 +98,8 @@ let g:dbext_default_profile_mysql_iprod1_master = 'type=MYSQL:extra=--defaults-f
 let g:dbext_default_profile_mysql_iprod2 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod2-reader'
 let g:dbext_default_profile_mysql_iprod2_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod2-writer'
 
+" atp
+let g:tex_conceal = ""
 " vim-rooter
 " let g:rooter_patterns = ['pom.xml', '.git', '.git/']
 
