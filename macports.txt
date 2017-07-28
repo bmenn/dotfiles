@@ -1,0 +1,11 @@
+coreutils
+curl
+findutils
+gnetcat
+grep
+htop
+ranger
+tcpdump
+tmux
+vim
+watch
