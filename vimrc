@@ -6,14 +6,14 @@ set encoding=utf8
 
 " Load Powerline
 if !has('nvim')
-if isdirectory(expand("$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim"))
+if isdirectory(expand("$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim"))
+        set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
+elseif isdirectory(expand("$HOME/Library/Python/3.6/lib/python/site-packages/powerline/bindings/vim"))
+	set rtp+=~/Library/Python/3.6/lib/python/site-packages/powerline/bindings/vim
+elseif isdirectory(expand("$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim"))
         set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
-elseif isdirectory(expand("$HOME/.local/lib/python3.4/site-packages/powerline/bindings/vim"))
-        set rtp+=~/.local/lib/python3.4/site-packages/powerline/bindings/vim
 elseif isdirectory(expand("/usr/lib/python3.5/site-packages/powerline/bindings/vim"))
         set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim
-elseif isdirectory(expand("$HOME/Library/Python/3.4/lib/python/site-packages/powerline/bindings/vim"))
-	set rtp+=~/Library/Python/3.4/lib/python/site-packages/powerline/bindings/vim
 endif
 endif
 
@@ -70,7 +70,8 @@ let g:tagbar_type_markdown = {
 let NERDTreeIgnore=['.pyc$', '^__pycache__$']
 
 " ctags
-set tags=../tags,./tags,tags
+set tags=./tags,../tags,../../tags
+let g:easytags_dynamic_files = 1
 let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 
