@@ -10,7 +10,8 @@ Plugin 'gmarik/Vundle.vim'
 " Add jedi-vim in the future
 "
 " Generic coding stuff
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'

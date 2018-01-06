@@ -4,6 +4,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set laststatus=2
 set encoding=utf8
 
+set lazyredraw
+set ttyfast
+
 " Load Powerline
 if !has('nvim')
 if isdirectory(expand("$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim"))
@@ -26,9 +29,11 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 filetype plugin indent on
 
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_insertion=1
 " ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
-let g:ctrlp_extensions = ['tag', 'mixed']
+let g:ctrlp_extensions = []
 let g:ctrlp_max_files = 0
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_root_markers = ['.git', 'pom.xml']
@@ -36,18 +41,6 @@ let g:ctrlp_root_markers = ['.git', 'pom.xml']
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 let g:ctrlp_working_path_mode = 'wr'
 set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,tags,*.class
-
-" syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_debug = 0
-let g:syntastic_python_checkers = ['pylint', 'pep8', 'python']
-let g:syntastic_python_pylint_post_args = '--msg-template="{path}:{line}:{column}:{C}: {msg_id} [{symbol}] {msg}"'
-let g:syntastic_scala_checkers = ['scalac', 'scalastyle']
-let g:syntastic_scala_scalastyle_jar = expand('$HOME/.local/bin/scalastyle_2.10-0.8.0-batch.jar')
-let g:syntastic_scala_scalastyle_config_file = expand('$HOME/.scalastyle_config.xml')
 
 " tagbar
 let g:tagbar_autofocus = 1
@@ -175,5 +168,7 @@ map  <leader>b :CtrlPBuffer<CR>
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
+
+nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 command! -nargs=1 Filter call Filter(<f-args>)
