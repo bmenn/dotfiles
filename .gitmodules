@@ -4,3 +4,6 @@
 [submodule "marker"]
 	path = marker
 	url = https://github.com/pindexis/marker
+[submodule "mintty/mintty-colors-solarized"]
+	path = mintty/mintty-colors-solarized
+	url = https://github.com/mavnn/mintty-colors-solarized
