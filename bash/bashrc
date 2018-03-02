@@ -1,0 +1,123 @@
+# MacPorts Installer addition on 2013-01-07_at_14:28:21: adding an appropriate PATH variable for use with MacPorts.
+export PATH="$HOME/.local/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="$HOME/Library/Python/3.6/bin:${PATH}"
+export PATH="$HOME/Library/Python/2.7/bin:${PATH}"
+export PATH="/opt/local/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH="/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
+
+export DOTFILES="${HOME}/.dotfiles"
+source "${DOTFILES}/sh/functions.sh"
+
+# OSX doesn't like setting the locale and breaks Powerline over SSH
+# export LC_ALL="en_US.utf8"
+# export LANG="en_US.utf8"
+
+# Setting path for mysql
+export PATH="/usr/local/mysql/bin:${PATH}"
+export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:${DYLD_LIBRARY_PATH}"
+export LDFLAGS="-L/usr/local/lib"
+
+# For eclipse
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# Place GNU version of coreutils in the path before the BSD versions
+[ -d "/opt/local/libexec/gnubin" ] && export PATH="/opt/local/libexec/gnubin:${PATH}"
+
+if [ "$TERM" != "dumb" ]; then
+    eval $(dircolors ~/.dir_colors)
+fi
+
+# ... Bash customizations
+# alias ls='gls --color=auto'
+# alias l.='gls -d .* --color=auto'
+# alias ll='gls -lh --color=auto'
+alias ls='ls --color=auto'
+alias l.='ls -d .* --color=auto'
+alias ll='ls -lh --color=auto'
+alias pd='pushd'
+#alias lslast='gls -t -1 | head -n 1'
+#alias cdlast='cd $(lslast)'
+#alias pyjson='python -mjson.tool'
+alias grep='grep --color=auto'
+# alias mysql=/usr/local/mysql/bin/mysql
+# alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+alias t='todo.sh -t -d /Users/bryantmenn/.todo/work_todo.cfg'
+alias tw='todo.sh -d /Users/bryantmenn/.todo/work_todo.cfg list @work | less'
+alias vim='vim -p'
+
+export LESS='-R'
+
+# Set key bindings to vi style
+set -o vi
+
+# ... BSD sed was misbehaving, use GNU sed from macports by default
+# Other bsd commands aliased-over with GNU version of commands here
+alias sed='gsed'
+alias zcat='gzcat'
+alias awk='gawk'
+alias find='gfind'
+
+# ...,,, Bash prompt with directory stack displayed
+# Customize Bash shell prompt
+#export PS1="\[\e[1;31m\][\$(dirs)]\[\e[0m\]\n\u@\h \$ "
+
+# virtualenvwrapper setup
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/projects
+# source /opt/local/Library/Frameworks/Python.framework/Versions/Current/bin/virtualenvwrapper.sh
+
+# set JAVA_HOME
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export _JAVA_OPTIONS="-Xms1024m -Xmx4096m -XX:MaxPermSize=512m"
+
+# Maven build
+export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"
+
+# Default Editor
+export EDITOR=vim
+
+# git options
+source ~/.git-completion.bash
+
+# powerline
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+# OSX location is different than XDG specs
+ source ~/Library/Python/3.6/lib/python/site-packages/powerline/bindings/bash/powerline.sh
+
+# z cd replacement
+. ${HOME}/build/z/z.sh
+
+function cpcd() { cp -i $1 $2 && cd $2; }
+function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
+function filter_ip() {
+        grep -o "[0-9]\{1,3\}\(.[0-9]\{1,3\}\)\{3\}" < ${1:-/dev/stdin}
+}
+function dot-show() {
+        defaults write com.apple.finder AppleShowAllFiles YES
+        killall Finder /System/Library/CoreServices/Finder.app
+}
+function dot-hide() {
+        defaults write com.apple.finder AppleShowAllFiles NO
+        killall Finder /System/Library/CoreServices/Finder.app
+}
+
+# Activate virtualenv in ./venv/bin/activate
+function activate() {
+        source ./venv/bin/activate
+}
+
+# Python dev related items
+export PYTEST_ADDOPTS='--color=yes'
+
+##
+# Your previous /Users/bryantmenn/.profile file was backed up as /Users/bryantmenn/.profile.macports-saved_2016-05-04_at_10:30:38
+##
+
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+[ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
+source ${HOME}/.profile_local
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
