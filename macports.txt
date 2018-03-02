@@ -1,11 +1,22 @@
-coreutils
-curl
-findutils
-gnetcat
-grep
-htop
-ranger
-tcpdump
-tmux
-vim
-watch
+ack                            @2.180.0_0 
+bash                           @4.4.12_0 
+cloc                           @1.76_0 
+cmake                          @3.9.0_0 
+cmake                          @3.9.1_0 
+coreutils                      @8.27_1 
+ctags                          @5.8_2 
+curl                           @7.54.0_0+ssl 
+curl                           @7.54.1_0+ssl 
+curl                           @7.55.0_0+ssl 
+gawk                           @4.1.4_3 
+go                             @1.9.4_0 
+gsed                           @4.4_0 
+ncdu                           @1.12_0 
+py36-readline                  @6.2.4.1_1 
+python36                       @3.6.2_0 
+tmux                           @2.5_0 
+tmux-pasteboard                @2.5_0 
+tree                           @1.7.0_0 
+vim                            @8.0.0596_0+huge 
+vim                            @8.0.0596_0+huge+python27+python36 
+wget                           @1.19.4_0+ssl 

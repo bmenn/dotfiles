@@ -1,5 +1,0 @@
-dvm
-gdb
-go@1.6
-khd
-kwm
