@@ -71,6 +71,7 @@ let g:easytags_auto_highlight = 0
 " ultisnips
 let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips", "UltiSnips"]
 let g:ultisnips_python_quoting_style="single"
+let g:ultisnips_python_triple_quoting_style="double"
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
