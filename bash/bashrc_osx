@@ -1,0 +1,32 @@
+export PATH="$HOME/Library/Python/3.6/bin:${PATH}"
+export PATH="$HOME/Library/Python/2.7/bin:${PATH}"
+export PATH="/opt/local/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH="/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
+
+# Setting path for mysql
+export PATH="/usr/local/mysql/bin:${PATH}"
+export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:${DYLD_LIBRARY_PATH}"
+export LDFLAGS="-L/usr/local/lib"
+
+# Place GNU version of coreutils in the path before the BSD versions
+[ -d "/opt/local/libexec/gnubin" ] && export PATH="/opt/local/libexec/gnubin:${PATH}"
+
+# ... BSD sed was misbehaving, use GNU sed from macports by default
+# Other bsd commands aliased-over with GNU version of commands here
+alias sed='gsed'
+alias zcat='gzcat'
+alias awk='gawk'
+alias find='gfind'
+
+# set JAVA_HOME
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export _JAVA_OPTIONS="-Xms1024m -Xmx4096m -XX:MaxPermSize=512m"
+
+function dot-show() {
+        defaults write com.apple.finder AppleShowAllFiles YES
+        killall Finder /System/Library/CoreServices/Finder.app
+}
+function dot-hide() {
+        defaults write com.apple.finder AppleShowAllFiles NO
+        killall Finder /System/Library/CoreServices/Finder.app
+}

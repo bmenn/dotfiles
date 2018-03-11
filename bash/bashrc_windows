@@ -1,0 +1,9 @@
+function pre-setup() {
+    ANACONDA_HOME=${HOME}/Anaconda3
+    export PATH=${ANACONDA_HOME}/Scripts:${ANACONDA_HOME}:$PATH
+}
+
+function post-setup() {
+    # winpty aliases
+    alias python="winpty python"
+}
