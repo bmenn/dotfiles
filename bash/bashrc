@@ -17,12 +17,13 @@ esac
 
 export PATH="$HOME/.local/bin:/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
 
-if [ "$TERM" != "dumb" ] && [ "$(which dircolors)" != "" ]; then
+if [ "$TERM" != "dumb" ] && [ -z "$(which dircolors)" ] && [ -f "${HOME}/.dir_colors" ]; then
     eval $(dircolors ~/.dir_colors)
 fi
 
 # ... Bash customizations
-alias ls='ls --color=auto'
+# TODO Needs colorized ls
+# alias ls='ls --color=auto'
 alias l.='ls -d .* --color=auto'
 alias ll='ls -lh --color=auto'
 alias pd='pushd'
@@ -51,11 +52,9 @@ fi
 powerline-daemon -q
 POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
+# TODO Need more universal way to identify source location
 # OSX location is different than XDG specs
- source ~/Library/Python/3.6/lib/python/site-packages/powerline/bindings/bash/powerline.sh
-
-# z cd replacement
-. ${HOME}/build/z/z.sh
+source ~/anaconda/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
 
 function cpcd() { cp -i $1 $2 && cd $2; }
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }
@@ -71,7 +70,6 @@ function activate() {
 # Python dev related items
 export PYTEST_ADDOPTS='--color=yes'
 
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 [ -f /usr/local/opt/dvm/dvm.sh ] && . /usr/local/opt/dvm/dvm.sh
 
 export NVM_DIR="$HOME/.nvm"

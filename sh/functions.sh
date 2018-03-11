@@ -1,3 +1,11 @@
+# Add Anaconda path if present
+[ -d "${HOME}/anaconda/bin/" ] && PATH="${HOME}/anaconda/bin/:${PATH}"
+
+# Load z
+source "${DOTFILES}/vendor/z/z.sh"
+# Load marker
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
 # Usage: activate
 # Description: activates python virtualenv
 function activate {
@@ -41,6 +49,7 @@ function show-archive() {
         else
             echo "'$1' is not a valid archive"
     fi
+}
 
 function set-color-light() {
         printf "\033]1337;SetProfile=tmux - Solarized Light\007"
