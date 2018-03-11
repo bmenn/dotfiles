@@ -3,13 +3,16 @@
 ANDROID_SDK_TOOLS=/opt/android-sdk/tools
 ANDROID_SDK_PLAT_TOOLS=/opt/android-sdk/platform-tools
 AWS_BEANSTALK=$HOME/AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7
-PATH=$HOME/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.2.0/bin:$HOME/.cabal/bin:$PATH
+PATH=$HOME/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.5.0/bin:$HOME/.cabal/bin:$PATH
 PATH=$PATH:$ANDROID_SDK_TOOLS
 PATH=$PATH:$ANDROID_SDK_PLAT_TOOLS
 export PATH
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda/lib64:/opt/cuda/extras/CUPTI/lib64"
 export CUDA_HOME=/opt/cuda
+export USE_CCACHE=1
 
+# General sh functions
+. ${HOME}/.dotfiles/sh/functions.sh
 # Z
 . ${HOME}/.local/bin/z
 
@@ -173,55 +176,3 @@ alias -s avi=$MEDIAPLAYER
 alias -s mpg=$MEDIAPLAYER
 alias -s flv=$MEDIAPLAYER
 alias -s m4v=$MEDIAPLAYER
-
-### Functions #################################################################
-# Usage: extract <file>
-# Description: extracts archived files (maybe)
-function extract () {
-    if [ -f $1 ]; then
-        case $1 in
-            *.tar.bz2)  tar -xvf $1        ;;
-            *.tar.gz)   tar -xvf $1        ;;
-            *.bz2)      bzip2 -d $1         ;;
-            *.gz)       gunzip -d $1        ;;
-            *.tar)      tar -xvf $1         ;;
-            *.tgz)      tar -zxvf $1        ;;
-            *.zip)      unzip $1            ;;
-            *.Z)        uncompress $1       ;;
-            *.rar)      unrar x $1            ;;
-            *)          echo "'$1' Error. Please go away" ;;
-        esac
-        else
-            echo "'$1' is not a valid file"
-    fi
-}
-
-# Usage: show-archive <archive>
-# Description: view archive without unpack
-function show-archive() {
-    if [ -f $1 ]; then
-        case $1 in
-            *.tar.bz2)     tar -jtf $1 ;;
-            *.tar.gz)      tar -ztf $1 ;;
-            *.tar)         tar -tf $1  ;;
-            *.tgz)         tar -ztf $1 ;;
-            *.zip)         unzip -l $1 ;;
-            *.rar)         rar vb $1   ;;
-            *)             echo "'$1' Error. Please go away" ;;
-        esac
-        else
-            echo "'$1' is not a valid archive"
-    fi
-}
-
-# Usage: battery
-# Description: Get battery info.
-function battery {
-    if which acpi > /dev/null; then
-        bat=`acpitool -B | awk '/Remaining capacity/' | sed 's/,//g' | awk '{print $5" ("$6")"}'`
-        if [ -z $bat ]; then
-            bat="Unknown"
-        fi
-        echo $bat
-    fi
-}
