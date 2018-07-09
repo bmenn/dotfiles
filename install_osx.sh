@@ -101,6 +101,9 @@ lnif ${DOTFILES}/jupyter/nbextensions ${HOME}/.local/share/jupyter/nbextensions
 lnif ${DOTFILES}/git/gitconfig ${HOME}/.gitconfig
 lnif ${DOTFILES}/git/gitignore ${HOME}/.gitignore
 
+# applescripts
+lnif ${DOTFILES}/applescript ${HOME}/Library/Scripts
+
 # install marker
 # marker needs to be updated to Python 3 for this to work
 # python ${DOTFILES}/vendor/marker/install.py
