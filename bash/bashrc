@@ -21,11 +21,10 @@ if [ "$TERM" != "dumb" ] && [ -z "$(which dircolors)" ] && [ -f "${HOME}/.dir_co
     eval $(dircolors ~/.dir_colors)
 fi
 
+# git bash completion
+source ${DOTFILES}/bash/git-completion.bash
+
 # ... Bash customizations
-# TODO Needs colorized ls
-# alias ls='ls --color=auto'
-alias l.='ls -d .* --color=auto'
-alias ll='ls -lh --color=auto'
 alias pd='pushd'
 #alias cdlast='cd $(lslast)'
 #alias pyjson='python -mjson.tool'
@@ -44,9 +43,7 @@ export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256m"
 export EDITOR=vim
 
 # git options
-if [ -d "${HOME}/.git-completion.bash" ]; then
-    source ~/.git-completion.bash
-fi
+[ -d "${HOME}/.git-completion.bash" ] && source ~/.git-completion.bash
 
 # powerline
 powerline-daemon -q
@@ -75,6 +72,4 @@ export PYTEST_ADDOPTS='--color=yes'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-if [ -z "${HOME}/.bashrc_local" ]; then
-    source ${HOME}/.bashrc_local
-fi
+[ -s "${HOME}/.bashrc_local" ] && source ${HOME}/.bashrc_local
