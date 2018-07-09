@@ -1,10 +1,25 @@
 # Add Anaconda path if present
 [ -d "${HOME}/anaconda/bin/" ] && PATH="${HOME}/anaconda/bin/:${PATH}"
+# If Homebrew coreutils are installed, prefer though
+[ -d "/usr/local/opt/coreutils/libexec/gnubin" ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
 # Load z
 source "${DOTFILES}/vendor/z/z.sh"
 # Load marker
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+# Cross shell aliases
+alias ls='ls --color=auto'
+alias l.='ls -d .* --color=auto'
+alias ll='ls -lh --color=auto'
+alias ga='git add'
+alias gc='git commit'
+alias gd='git diff'
+alias gp='git push'
+alias gs='git status'
+alias mk='minikube'
+alias kc='kubectl'
+alias ap='ansible-playbook'
 
 # Usage: activate
 # Description: activates python virtualenv
