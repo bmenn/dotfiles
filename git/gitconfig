@@ -12,3 +12,12 @@
 	required = true
 [include]
         path = ~/.gitconfig_local
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	pu = push
+	a = add
+	d = diff
+	ds = diff --staged
