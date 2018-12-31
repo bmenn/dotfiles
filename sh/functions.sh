@@ -1,7 +1,9 @@
 # Add Anaconda path if present
-[ -d "${HOME}/anaconda/bin/" ] && PATH="${HOME}/anaconda/bin/:${PATH}"
+[ -d "${HOME}/anaconda/bin/" ] && PATH="${PATH}:${HOME}/anaconda/bin/"
 # If Homebrew coreutils are installed, prefer though
 [ -d "/usr/local/opt/coreutils/libexec/gnubin" ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+
+export TERMCOLOR="dark"
 
 # Load z
 source "${DOTFILES}/vendor/z/z.sh"
@@ -63,9 +65,23 @@ function show-archive() {
 }
 
 function set-color-light() {
-        printf "\033]1337;SetProfile=tmux - Solarized Light\007"
+        echo -e "\033]50;SetProfile=tmux - Solarized Light\a"
+        export TERMCOLOR="light"
 }
 
 function set-color-dark() {
-        printf "\033]1337;SetProfile=tmux - Solarized Dark\007"
+        printf "\x1b]50;SetProfile=tmux - Solarized Dark\x07"
+        export TERMCOLOR="dark"
 }
+
+function pet-prev(){
+        PREV=$(fc -lrn | head -n 1)
+        sh -c "pet new `printf %q "$PREV"`"
+}
+
+function pet-select() {
+  BUFFER=$(pet search --query "$READLINE_LINE")
+  READLINE_LINE=$BUFFER
+  READLINE_POINT=${#BUFFER}
+}
+bind -x '"\C-x\C-r": pet-select'

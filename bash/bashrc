@@ -29,7 +29,6 @@ alias pd='pushd'
 #alias cdlast='cd $(lslast)'
 #alias pyjson='python -mjson.tool'
 alias grep='grep --color=auto'
-alias vim='vim -p'
 
 export LESS='-R'
 
