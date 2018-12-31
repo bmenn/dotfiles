@@ -24,3 +24,7 @@ ensime-vim.log
 .testmondata
 venv
 .tmontmp
+*.ovpn
+.DS_Store
+*.swp
+.ipynb_checkpoints

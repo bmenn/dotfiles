@@ -17,7 +17,8 @@
 	br = branch
 	ci = commit
 	st = status
-	pu = push
+	ph = push
+        pl = pull
 	a = add
 	d = diff
 	ds = diff --staged
