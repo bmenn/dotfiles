@@ -15,6 +15,8 @@ Plugin 'w0rp/ale'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'kien/ctrlp.vim'
+Plugin 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plugin 'junegunn/fzf.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'bmenn/vim-colors-solarized'
 Plugin 'xolox/vim-misc'

@@ -9,14 +9,10 @@ set ttyfast
 
 " Load Powerline
 if !has('nvim')
-if isdirectory(expand("$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim"))
+if isdirectory(expand("$HOME/anaconda/lib/python3.6/site-packages/powerline/bindings/vim"))
+	set rtp+=~/anaconda/lib/python3.6/site-packages/powerline/bindings/vim
+elseif isdirectory(expand("$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim"))
         set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
-elseif isdirectory(expand("$HOME/Library/Python/3.6/lib/python/site-packages/powerline/bindings/vim"))
-	set rtp+=~/Library/Python/3.6/lib/python/site-packages/powerline/bindings/vim
-elseif isdirectory(expand("$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim"))
-        set rtp+=~/.local/lib/python2.7/site-packages/powerline/bindings/vim
-elseif isdirectory(expand("/usr/lib/python3.5/site-packages/powerline/bindings/vim"))
-        set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim
 endif
 endif
 
@@ -29,16 +25,30 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 filetype plugin indent on
 
+" ale
+let g:ale_sign_error = "!"
+let g:ale_sign_warning = "*"
+
+" vim-markdown
+let g:vim_markdown_folding_disabled = 1
+
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+
+" ack.vim
+let g:ackprg = "ag --vimgrep"
+
 " ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
 let g:ctrlp_extensions = []
 let g:ctrlp_max_files = 0
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_root_markers = ['.git', 'pom.xml']
+
 " May need to add a fallback
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard --recurse-submodules']
 let g:ctrlp_working_path_mode = 'wr'
 set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,tags,*.class
 
@@ -59,6 +69,7 @@ let g:tagbar_type_markdown = {
     \ },
     \ 'sort': 0,
 \ }
+
 " NERDTree
 let NERDTreeIgnore=['.pyc$', '^__pycache__$']
 
@@ -78,20 +89,6 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
-
-" dbext
-let g:dbext_default_profile_mysql_prod1 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod1-reader'
-let g:dbext_default_profile_mysql_prod1_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod1-writer'
-let g:dbext_default_profile_mysql_prod2 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod2-reader'
-let g:dbext_default_profile_mysql_prod2_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod2-writer'
-let g:dbext_default_profile_mysql_prod3 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod3-reader'
-let g:dbext_default_profile_mysql_prod3_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod3-writer'
-let g:dbext_default_profile_mysql_prod6 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod6-reader'
-let g:dbext_default_profile_mysql_prod6_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/prod6-writer'
-let g:dbext_default_profile_mysql_iprod1 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod1-reader'
-let g:dbext_default_profile_mysql_iprod1_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod1-writer'
-let g:dbext_default_profile_mysql_iprod2 = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod2-reader'
-let g:dbext_default_profile_mysql_iprod2_master = 'type=MYSQL:extra=--defaults-file=~/mysql/connections/iprod2-writer'
 
 " atp
 let g:tex_conceal = ""
@@ -122,8 +119,8 @@ set backspace=indent,eol,start
 
 " Solarized settings
 syntax enable
-set background=dark
 colorscheme solarized
+let &background = $TERMCOLOR
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -135,7 +132,6 @@ endif
 
 set number
 set ignorecase
-set cursorline
 set colorcolumn=76
 set textwidth=76
 set expandtab
@@ -153,7 +149,7 @@ nnoremap <silent> <S-T> :TagbarToggle<CR>
 vmap <Tab> >gv
 vmap <S-Tab> <gv
 
-function Filter(pattern)
+function! Filter(pattern)
 let @a = ''
         execute 'g/'. a:pattern . '/y A'
         new
@@ -171,5 +167,8 @@ map  <leader>b :CtrlPBuffer<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 nnoremap <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" Toggle background color
+map <leader>bg :let &background= ( &background == "dark" ? "light" : "dark" )<CR>
 
 command! -nargs=1 Filter call Filter(<f-args>)
