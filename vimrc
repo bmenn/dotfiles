@@ -38,7 +38,7 @@ let g:ycm_server_keep_logfiles = 1
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
 " ack.vim
-let g:ackprg = "ag --vimgrep"
+let g:ackprg = "rg --vimgrep"
 
 " ctrlp
 let g:ctrlp_match_window = 'top,order:ttb'
