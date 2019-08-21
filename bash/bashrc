@@ -1,6 +1,8 @@
 export DOTFILES="${HOME}/.dotfiles"
 source "${DOTFILES}/sh/functions.sh"
 
+bind -x '"\C-x\C-r": pet-select'
+
 # OS specific setups
 _uname=$(uname)
 case ${_uname} in

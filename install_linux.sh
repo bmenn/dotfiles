@@ -60,6 +60,9 @@ mkdir -p $HOME/.config
 lnif $DOTFILES/powerline $HOME/.config/powerline
 pip3 install --user powerline-status
 
+# alacritty
+lnif $DOTFILES/alacritty $HOME/.config/alacritty
+
 if [ ! -e $HOME/.vim/bundle/Vundle.vim/autoload ]; then
         echo "Installing Vundle"
         git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim

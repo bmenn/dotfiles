@@ -1,5 +1,6 @@
 # Add Anaconda path if present
 [ -d "${HOME}/anaconda/bin/" ] && PATH="${PATH}:${HOME}/anaconda/bin/"
+[ -d "/opt/miniconda3/bin/" ] && PATH="${PATH}:/opt/miniconda3/bin/"
 # If Homebrew coreutils are installed, prefer though
 [ -d "/usr/local/opt/coreutils/libexec/gnubin" ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
 
@@ -84,4 +85,3 @@ function pet-select() {
   READLINE_LINE=$BUFFER
   READLINE_POINT=${#BUFFER}
 }
-bind -x '"\C-x\C-r": pet-select'
