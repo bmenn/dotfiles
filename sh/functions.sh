@@ -1,25 +1,3 @@
-# Add Anaconda path if present
-[ -d "${HOME}/anaconda/bin/" ] && PATH="${PATH}:${HOME}/anaconda/bin/"
-[ -d "/opt/miniconda3/bin/" ] && PATH="${PATH}:/opt/miniconda3/bin/"
-# If Homebrew coreutils are installed, prefer though
-[ -d "/usr/local/opt/coreutils/libexec/gnubin" ] && PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-
-export TERMCOLOR="dark"
-
-# Load z
-source "${DOTFILES}/vendor/z/z.sh"
-# Load marker
-[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
-
-# Cross shell aliases
-alias ls='ls --color=auto'
-alias l.='ls -d .* --color=auto'
-alias ll='ls -lh --color=auto'
-alias g='git'
-alias mk='minikube'
-alias kc='kubectl'
-alias ap='ansible-playbook'
-
 # Usage: activate
 # Description: activates python virtualenv
 function activate {
@@ -66,13 +44,13 @@ function show-archive() {
 }
 
 function set-color-light() {
-        echo -e "\033]50;SetProfile=tmux - Solarized Light\a"
         export TERMCOLOR="light"
+        cp ${HOME}/.config/alacritty/alacritty-light.yml ${HOME}/.config/alacritty/alacritty.yml
 }
 
 function set-color-dark() {
-        printf "\x1b]50;SetProfile=tmux - Solarized Dark\x07"
         export TERMCOLOR="dark"
+        cp ${HOME}/.config/alacritty/alacritty-dark.yml ${HOME}/.config/alacritty/alacritty.yml
 }
 
 function pet-prev(){

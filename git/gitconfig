@@ -22,3 +22,7 @@
 	a = add
 	d = diff
 	ds = diff --staged
+        f = fetch
+[user]
+	name = Bryant Menn
+	email = bryant@embedintel.com

@@ -1,5 +1,5 @@
 export DOTFILES="${HOME}/.dotfiles"
-source "${DOTFILES}/sh/functions.sh"
+source "${DOTFILES}/sh/profile.sh"
 
 bind -x '"\C-x\C-r": pet-select'
 

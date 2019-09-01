@@ -35,7 +35,7 @@ let g:vim_markdown_folding_disabled = 1
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_server_keep_logfiles = 1
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
 
 " ack.vim
 let g:ackprg = "rg --vimgrep"
@@ -145,9 +145,9 @@ au BufRead,BufNewFile *.md set filetype=markdown
 "
 
 " Set indent/unindent for visual
-nnoremap <silent> <S-T> :TagbarToggle<CR>
 vmap <Tab> >gv
 vmap <S-Tab> <gv
+nnoremap <silent> <S-T> :TagbarToggle<CR>
 
 function! Filter(pattern)
 let @a = ''
@@ -160,8 +160,7 @@ let @a = ''
         sort
 endfunction
 
-" CtrlP buffer is really useful
-map  <leader>b :CtrlPBuffer<CR>
+map <C-p> :FZF<CR>
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>

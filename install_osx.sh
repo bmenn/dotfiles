@@ -1,6 +1,7 @@
 #!/bin/sh
 set -e
 
+# TODO Add git submodule init and update
 DOTFILES="${HOME}/.dotfiles"
 NOTES=$(cat << EOF
 ###########################################################################
@@ -38,29 +39,7 @@ export PATH="${HOME}/anaconda/bin:${PATH}"
 # Install universal Python packages
 # Cannot install from requirements because qtpy conflicts with ansible
 # conda install --yes -c conda-forge --file ${DOTFILES}/requirements.txt
-conda install -c conda-forge powerline-status
-
-# Install Docker-CE stable
- curl -L -o ${HOME}/Docker.dmg https://download.docker.com/mac/stable/Docker.dmg
- sudo hdiutil attach ${HOME}/Downloads/Docker.dmg
- sudo cp -R /Volumes/Docker/Docker.app /Applications
- sudo hdiutil detach /Volumes/Docker
-
-# Install iTerm2
- curl -L -o ${HOME}/iTerm2.zip https://iterm2.com/downloads/stable/latest
- unzip ${HOME}/iTerm2.zip -d /Applications
-
-# Install Google Chrome
- curl -L -o ${HOME}/Downloads/googlechrome.dmg https://dl.google.com/chrome/mac/stable/CHFA/googlechrome.dmg
- sudo hdiutil attach ${HOME}/Downloads/googlechrome.dmg
- sudo cp -R "/Volumes/Google Chrome/Google Chrome.app" /Applications
- sudo hdiutil detach "/Volumes/Google Chrome"
-
-# Install Slack
-curl -L -o ${HOME}/Downloads/Slack.dmg https://slack.com/ssb/download-osx
-sudo hdiutil attach ${HOME}/Downloads/Slack.dmg
-sudo cp -R /Volumes/Slack*/Slack.app /Applications
-sudo hdiutil detach /Volumes/Slack*
+conda install -y -c conda-forge powerline-status
 
 # tmux
 lnif ${DOTFILES}/tmux/tmux.conf ${HOME}/.tmux.conf
@@ -90,6 +69,9 @@ echo "Update/Install plugins using vundle"
 vim -u ${DOTFILES}/vimrc +BundleInstall! +BundleClean +qall
 
 # powerline
+# Install fonts via homebrew
+brew tap homebrew/cask-fonts
+brew cask install font-source-code-pro-for-powerline
 mkdir -p ${HOME}/.config
 lnif ${DOTFILES}/powerline ${HOME}/.config/powerline
 
@@ -103,6 +85,16 @@ lnif ${DOTFILES}/git/gitignore ${HOME}/.gitignore
 
 # applescripts
 lnif ${DOTFILES}/applescript ${HOME}/Library/Scripts
+
+# alacritty
+brew install rust
+mkdir -p ${HOME}/build
+git clone https://github.com/jwilm/alacritty ${HOME}/build/github.com/jwilm/alacritty
+OLDPWD=$(pwd)
+cd ${HOME}/build/github.com/jwilm/alacritty
+make dmg
+cp -r target/release/osx/Alacritty.app /Applications/Alacritty.app
+cd ${OLDPWD}
 
 # install marker
 # marker needs to be updated to Python 3 for this to work

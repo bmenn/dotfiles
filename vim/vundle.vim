@@ -14,10 +14,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'w0rp/ale'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'majutsushi/tagbar'
-Plugin 'kien/ctrlp.vim'
-Plugin 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'mileszs/ack.vim'
 Plugin 'bmenn/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
 Plugin 'universal-ctags/ctags'
@@ -30,16 +28,13 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'airblade/vim-rooter'
 Plugin 'DataWraith/auto_mkdir'
 Plugin 'tpope/vim-surround'
+Plugin 'mileszs/ack.vim'
 
 " Python stuff
 "Plugin 'klen/python-mode'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'Jinja'
 Plugin 'davidhalter/jedi'
-
-" Scala
-Plugin 'derekwyatt/vim-scala'
-"Plugin 'ensime/ensime-vim'
 
 " HTML/JS/CSS stuff
 Plugin 'mattn/emmet-vim'
@@ -50,19 +45,9 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 
-" SQL - Align is required by SQLUtilities
-Plugin 'SQLUtilities'
-Plugin 'Align'
-Plugin 'dbext.vim'
+Plugin 'lervag/vimtex'
 
 " Notetaking stuff
-Plugin 'freitass/todo.txt-vim'
-Plugin 'LanguageTool'
-Plugin 'coot/atp_vim'
-" No Python 3 support
-" Plugin 'neilagabriel/vim-geeknote'
-
-" Old stuff
-"Bundle 'wookiehangover/jshint.vim'
+Plugin 'junegunn/goyo.vim'
 
 call vundle#end()

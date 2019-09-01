@@ -19,8 +19,7 @@ alias awk='gawk'
 alias find='gfind'
 
 # set JAVA_HOME
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-export _JAVA_OPTIONS="-Xms1024m -Xmx4096m -XX:MaxPermSize=512m"
+# export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 
 function dot-show() {
         defaults write com.apple.finder AppleShowAllFiles YES
@@ -30,3 +29,6 @@ function dot-hide() {
         defaults write com.apple.finder AppleShowAllFiles NO
         killall Finder /System/Library/CoreServices/Finder.app
 }
+
+# bash-completions
+source /usr/local/etc/bash_completion.d/*
