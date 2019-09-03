@@ -35,7 +35,9 @@ let g:vim_markdown_folding_disabled = 1
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_server_keep_logfiles = 1
-let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
+if has('macunix')
+    let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
+endif
 
 " ack.vim
 let g:ackprg = "rg --vimgrep"
@@ -80,7 +82,8 @@ let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 
 " ultisnips
-let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips", "UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips", $HOME."/.vim/UltiSnips"]
+let g:UltiSnipsSnippetDir=$HOME."/.vim/UltiSnips"
 let g:ultisnips_python_quoting_style="single"
 let g:ultisnips_python_triple_quoting_style="double"
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -90,8 +93,17 @@ let g:UltiSnipsJumpBackwardTrigger="<C-k>"
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
 
-" atp
-let g:tex_conceal = ""
+
+" vimtex
+set conceallevel=1
+let g:tex_conceal = "abdmg"
+let g:vimtex_compiler_latexrun_engines = {
+    \ '_': 'xelatex',
+    \ 'pdflatex': 'pdflatex',
+    \ 'lualatex': 'lualatex',
+    \ 'xelatex': 'xelatex',
+    \}
+
 " vim-rooter
 " let g:rooter_patterns = ['pom.xml', '.git', '.git/']
 

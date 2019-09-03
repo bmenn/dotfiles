@@ -53,6 +53,7 @@ mkdir -p $HOME/.vim/bundle
 lnif $DOTFILES/vimrc $HOME/.vimrc
 lnif $DOTFILES/vim/vundle.vim $HOME/.vim/vundle.vim
 lnif $DOTFILES/vim/after $HOME/.vim/after
+lnif $DOTFILES/vim/UltiSnips $HOME/.vim/UltiSnips
 
 # powerline
 which pip3 || install_package python3-pip

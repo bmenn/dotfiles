@@ -59,6 +59,7 @@ mkdir -p ${HOME}/.vim/bundle
 lnif ${DOTFILES}/vimrc ${HOME}/.vimrc
 lnif ${DOTFILES}/vim/vundle.vim ${HOME}/.vim/vundle.vim
 lnif ${DOTFILES}/vim/after ${HOME}/.vim/after
+lnif ${DOTFILES}/vim/Ultisnips ${HOME}/.vim/UltiSnips
 
 if [ ! -e ${HOME}/.vim/bundle/Vundle.vim/autoload ]; then
         echo "Installing Vundle"
