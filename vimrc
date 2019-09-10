@@ -98,10 +98,10 @@ let g:EclimCompletionMethod = 'omnifunc'
 set conceallevel=1
 let g:tex_conceal = "abdmg"
 let g:vimtex_compiler_latexrun_engines = {
-    \ '_': 'xelatex',
-    \ 'pdflatex': 'pdflatex',
-    \ 'lualatex': 'lualatex',
-    \ 'xelatex': 'xelatex',
+    \ '_': '-xelatex',
+    \ 'pdflatex': '-pdflatex',
+    \ 'lualatex': '-lualatex',
+    \ 'xelatex': '-xelatex',
     \}
 
 " vim-rooter
