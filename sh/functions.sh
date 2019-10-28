@@ -43,13 +43,20 @@ function show-archive() {
     fi
 }
 
+export DOTFILES_COLORSCHEME_FILE="${HOME}/.cache/dotfiles-colorscheme"
 function set-color-light() {
         export TERMCOLOR="light"
+        echo "light" > "${DOTFILES_COLORSCHEME_FILE}"
+        # FIXME should check if tmux is running
+        tmux set-environment -g TERMCOLOR dark
         cp ${HOME}/.config/alacritty/alacritty-light.yml ${HOME}/.config/alacritty/alacritty.yml
 }
 
 function set-color-dark() {
         export TERMCOLOR="dark"
+        echo "dark" > "${DOTFILES_COLORSCHEME_FILE}"
+        # FIXME should check if tmux is running
+        tmux set-environment -g TERMCOLOR dark
         cp ${HOME}/.config/alacritty/alacritty-dark.yml ${HOME}/.config/alacritty/alacritty.yml
 }
 

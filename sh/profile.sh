@@ -12,3 +12,4 @@ source "${DOTFILES}/vendor/z/z.sh"
 
 source ${DOTFILES}/sh/aliases.sh
 source ${DOTFILES}/sh/functions.sh
+source ${HOME}/.profile_local
