@@ -16,8 +16,7 @@ export USE_CCACHE=1
 . ${HOME}/.dotfiles/sh/profile.sh
 
 # Powerline
-export PYTHON3_USER_LIB="$HOME/.local/lib/$(python3 --version | sed 's/.*/\L&/;s/ \([0-9]\+\.[0-9]\+\)\.[0-9]\+/\1/')"
-. $PYTHON3_USER_LIB/site-packages/powerline/bindings/zsh/powerline.zsh
+. $PYTHON3_USER_LIB/powerline/bindings/zsh/powerline.zsh
 
 autoload -U colors; colors
 

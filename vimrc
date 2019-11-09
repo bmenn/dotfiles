@@ -9,11 +9,12 @@ set ttyfast
 
 " Load Powerline
 if !has('nvim')
-if isdirectory(expand("$HOME/anaconda/lib/python3.6/site-packages/powerline/bindings/vim"))
-	set rtp+=~/anaconda/lib/python3.6/site-packages/powerline/bindings/vim
-elseif isdirectory(expand("$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim"))
-        set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
-endif
+        set rtp+=$PYTHON3_USER_LIB/powerline/bindings/vim
+" if isdirectory(expand("$HOME/anaconda/lib/python3.6/site-packages/powerline/bindings/vim"))
+" 	set rtp+=~/anaconda/lib/python3.6/site-packages/powerline/bindings/vim
+" elseif isdirectory(expand("$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim"))
+"         set rtp+=~/.local/lib/python3.6/site-packages/powerline/bindings/vim
+" endif
 endif
 
 if filereadable(expand("~/.vim/vundle.vim"))
@@ -132,7 +133,8 @@ set backspace=indent,eol,start
 " Solarized settings
 syntax enable
 colorscheme solarized
-let &background = $TERMCOLOR
+" let &background = $TERMCOLOR
+let &background = join(readfile($DOTFILES_COLORSCHEME_FILE), "\n")
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
