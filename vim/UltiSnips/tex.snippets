@@ -1,5 +1,29 @@
 extends tex
 
+global !p
+texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C',
+'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS',
+'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
+
+texIgnoreMathZones = ['texMathText']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(
+            i for i in reversed(synstackids)
+            if i in texIgnoreMathZoneIds or i in texMathZoneIds
+        )
+		return first != ignore
+	except StopIteration:
+		return False
+endglobal
+
 snippet ilm "Inline math" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
@@ -9,6 +33,89 @@ else:
 `$2
 endsnippet
 
+context "math()"
+snippet not "not" wA
+\not
+endsnippet
+
+context "math()"
+snippet ln "natural log" wA
+\ln
+endsnippet
+
+context "math()"
+snippet log2 "log 2" wA
+\log_{2}
+endsnippet
+
+context "math()"
+snippet log10 "log 10" wA
+\log_{10}
+endsnippet
+
+context "math()"
+snippet iff "iff" wA
+\iff
+endsnippet
+
+context "math()"
+snippet if "if ... then" wA
+$1 \implies $2
+endsnippet
+
+# Logic
+context "math()"
+snippet lan "and" wA
+\land
+endsnippet
+
+context "math()"
+snippet lor "or" wA
+\lor
+endsnippet
+
+context "math()"
+snippet lx "xor" wA
+\veebar
+endsnippet
+
+# Set theory
+context "math()"
 snippet compl "Complement" iA
 ^{c}
+endsnippet
+
+context "math()"
+snippet un "Union" wA
+\cup
+endsnippet
+
+context "math()"
+snippet it "intersect" wA
+\cap
+endsnippet
+
+context "math()"
+snippet in "in" wA
+\in
+endsnippet
+
+context "math()"
+snippet sN "Natural numbers" wA
+\mathbb{N}
+endsnippet
+
+context "math()"
+snippet sZ "Integer numbers" wA
+\mathbb{Z}
+endsnippet
+
+context "math()"
+snippet sQ "Rational numbers" wA
+\mathbb{Q}
+endsnippet
+
+context "math()"
+snippet sR "Real numbers" wA
+\mathbb{R}
 endsnippet
