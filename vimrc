@@ -43,17 +43,23 @@ endif
 " ack.vim
 let g:ackprg = "rg --vimgrep"
 
-" ctrlp
-let g:ctrlp_match_window = 'top,order:ttb'
-let g:ctrlp_extensions = []
-let g:ctrlp_max_files = 0
-let g:ctrlp_clear_cache_on_exit = 1
-let g:ctrlp_root_markers = ['.git', 'pom.xml']
-
-" May need to add a fallback
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard --recurse-submodules']
-let g:ctrlp_working_path_mode = 'wr'
 set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,tags,*.class
+
+" Goyo
+function! s:goyo_enter()
+        set number
+        autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+        autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
+        set colorcolumn=76
+        highlight ColorColumn ctermbg=7 guibg=LightRed
+endfunction
+
+function! s:goyo_leave()
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+let g:goyo_width=85
 
 " tagbar
 let g:tagbar_autofocus = 1
@@ -110,7 +116,6 @@ let g:vimtex_compiler_latexrun_engines = {
 
 " Change configuration type files to correct syntax
 autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
-
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
@@ -126,6 +131,15 @@ set ruler       " show the cursor position all the time
 "
 " Interface Settings
 "
+
+" Auto-toggle absolute and relative line numbers. Use relative line numbers
+" when in normal mode and out-of-focus
+set number relativenumber
+augroup numbertoggle
+        autocmd!
+        autocmd BufEnter,FocusGained,InsertLeave,WinEnter * set relativenumber
+        autocmd BufLeave,FocusLost,InsertEnter,WinLeave * set norelativenumber
+augroup END
 
 " Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -144,7 +158,6 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
-set number
 set ignorecase
 set colorcolumn=76
 set textwidth=76
