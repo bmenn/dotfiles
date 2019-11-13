@@ -10,8 +10,6 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	required = true
-[include]
-        path = ~/.gitconfig_local
 [alias]
 	co = checkout
 	br = branch
@@ -23,3 +21,6 @@
 	d = diff
 	ds = diff --staged
         f = fetch
+
+[include]
+        path = ~/.gitconfig_local
