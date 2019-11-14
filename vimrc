@@ -51,7 +51,7 @@ function! s:goyo_enter()
         autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
         autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
         set colorcolumn=76
-        highlight ColorColumn ctermbg=7 guibg=LightRed
+        highlight ColorColumn ctermfg=11 ctermbg=7 guibg=LightRed
 endfunction
 
 function! s:goyo_leave()
