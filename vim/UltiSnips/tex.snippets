@@ -119,3 +119,30 @@ context "math()"
 snippet sR "Real numbers" wA
 \mathbb{R}
 endsnippet
+
+snippet citet "Textual citation" wA
+\citet{$1}
+endsnippet
+
+snippet citep "Parenthetical citation" wA
+\citep{$1}
+endsnippet
+
+snippet cref "Cleverref" wA
+\Cref{$1}
+endsnippet
+
+snippet table "Booktabs table"
+\begin{table}[htpb]
+  \centering
+  \caption{$1}
+  \label{tab:$1}
+  \begin{tabular}{$2}
+  \toprule
+  $3
+  \midrule
+  $4
+  \bottomrule
+  \end{tabular}
+\end{table}
+endsnippet

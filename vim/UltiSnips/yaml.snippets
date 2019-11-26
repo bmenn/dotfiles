@@ -1,0 +1,43 @@
+snippet kustomization "Kustomization template"
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: $1
+resources:
+  - $2
+vars:
+  - $3
+endsnippet
+
+snippet deployment "K8S deployment"
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: $1
+  template:
+    metadata:
+      labels:
+        app: $1
+    spec:
+      containers:
+      - name: $1
+        image: $2
+endsnippet
+
+snippet service
+apiVersion: v1
+kind: Service
+metadata:
+  name: $1
+spec:
+  selector:
+    app: $2
+  ports:
+    - protocol: TCP
+      port: $3
+      targetPort: $4
+endsnippet

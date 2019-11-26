@@ -176,6 +176,10 @@ vmap <Tab> >gv
 vmap <S-Tab> <gv
 nnoremap <silent> <S-T> :TagbarToggle<CR>
 
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+
 function! Filter(pattern)
 let @a = ''
         execute 'g/'. a:pattern . '/y A'
