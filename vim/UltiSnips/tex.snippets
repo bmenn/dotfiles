@@ -120,6 +120,107 @@ snippet sR "Real numbers" wA
 \mathbb{R}
 endsnippet
 
+context "math()"
+snippet "(\\?\w+)(,\.|\.,)" "Vector postfix" riA
+\vec{`!p snip.rv=match.group(1)`}
+endsnippet
+
+context "math()"
+snippet sq "^2" iA
+^2
+endsnippet
+
+context "math()"
+snippet pow "superscript" iA
+^{$1}$0
+endsnippet
+
+context "math()"
+snippet text "text" wA
+\text{$1}
+endsnippet
+
+context "math()"
+snippet sum "sum" wA
+\sum_{$1}^{$2}
+endsnippet
+
+context "math()"
+snippet __ "group subscript" wA
+_{$1}
+endsnippet
+
+context "math()"
+snippet ^^ "group superscript" wA
+^{$1}
+endsnippet
+
+context "math()"
+snippet lr "left( right)" i
+\left( ${1:${VISUAL}} \right) $0
+endsnippet
+
+context "math()"
+snippet lr( "left( right)" i
+\left( ${1:${VISUAL}} \right) $0
+endsnippet
+
+context "math()"
+snippet lr| "left| right|" i
+\left| ${1:${VISUAL}} \right| $0
+endsnippet
+
+context "math()"
+snippet lr{ "left\{ right\}" i
+\left\\{ ${1:${VISUAL}} \right\\} $0
+endsnippet
+
+context "math()"
+snippet lrb "left\{ right\}" i
+\left\\{ ${1:${VISUAL}} \right\\} $0
+endsnippet
+
+context "math()"
+snippet lr[ "left[ right]" i
+\left[ ${1:${VISUAL}} \right] $0
+endsnippet
+
+snippet eq "aligned equation"
+\begin{equation}\begin{aligned}
+  $1
+\end{aligned}\end{equation}
+endsnippet
+
+context "math()"
+snippet /l "lambda" wA
+\lambda
+endsnippet
+
+context "math()"
+snippet /a "alpha" wA
+\alpha
+endsnippet
+
+context "math()"
+snippet /b "beta" wA
+\beta
+endsnippet
+
+context "math()"
+snippet /w "omega" wA
+\omega
+endsnippet
+
+context "math()"
+snippet /u "mu" wA
+\mu
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])(\d)' "auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
 snippet citet "Textual citation" wA
 \citet{$1}
 endsnippet
