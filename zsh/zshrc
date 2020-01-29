@@ -76,12 +76,6 @@ promptinit
 # Autocompletion with arrow-key menu
 zstyle ':completion:*' menu select
 
-# virtualenvwrapper
-export WORKON_HOME=~/.virtualenv
-export PROJECT_HOME=~/projects
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-source /usr/bin/virtualenvwrapper.sh
-
 ### Key bindings ##############################################################
 # http://mundy.yazzy.org/unix/zsh.php
 # http://www.zsh.org/mla/users/2000/msg00727.html
