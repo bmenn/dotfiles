@@ -217,6 +217,16 @@ snippet /u "mu" wA
 endsnippet
 
 context "math()"
+snippet --> "right arrow" wA
+\rightarrow
+endsnippet
+
+context "math()"
+snippet ==> "right double arrow" wA
+\Rightarrow
+endsnippet
+
+context "math()"
 snippet '([A-Za-z])(\d)' "auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
