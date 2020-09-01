@@ -103,7 +103,10 @@ let g:EclimCompletionMethod = 'omnifunc'
 
 " vimtex
 set conceallevel=1
+let g:tex_flavor = "xelatex"
 let g:tex_conceal = "abdmg"
+" TODO This needs to be cross platform
+let g:vimtex_view_method = "zathura"
 let g:vimtex_compiler_latexrun_engines = {
     \ '_': '-xelatex',
     \ 'pdflatex': '-pdflatex',

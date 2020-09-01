@@ -146,12 +146,12 @@ snippet sum "sum" wA
 endsnippet
 
 context "math()"
-snippet __ "group subscript" wA
+snippet __ "group subscript" iA
 _{$1}
 endsnippet
 
 context "math()"
-snippet ^^ "group superscript" wA
+snippet ^^ "group superscript" iA
 ^{$1}
 endsnippet
 
@@ -222,8 +222,13 @@ snippet --> "right arrow" wA
 endsnippet
 
 context "math()"
-snippet ==> "right double arrow" wA
-\Rightarrow
+snippet >= "greater than or equal" wA
+\geq
+endsnippet
+
+context "math()"
+snippet <= "less than or equal" wA
+\leq
 endsnippet
 
 context "math()"
@@ -256,4 +261,14 @@ snippet table "Booktabs table"
   \bottomrule
   \end{tabular}
 \end{table}
+endsnippet
+
+context "math()"
+snippet // "Fraction" wA
+\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet ... "ellipse" wA
+\ldots
 endsnippet
