@@ -12,15 +12,35 @@
 	required = true
 [alias]
 	co = checkout
-	br = branch
+	b = branch
+        bs = branch --sort=-committerdate
 	ci = commit
 	st = status
+        sh = stash
+        shp = stash pop
+        shl = stash list
 	ph = push
         pl = pull
 	a = add
 	d = diff
+        r = rebase
 	ds = diff --staged
         f = fetch
 
 [include]
         path = ~/.gitconfig_local
+[init]
+	defaultBranch = master
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver
+[difftool "nbdime"]
+	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+[difftool]
+	prompt = false
+[mergetool "nbdime"]
+	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	prompt = false

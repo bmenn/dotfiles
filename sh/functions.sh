@@ -48,8 +48,8 @@ function set-color-light() {
         echo "light" > "${DOTFILES_COLORSCHEME_FILE}"
         # FIXME should check if tmux is running
         tmux set-environment -g TERMCOLOR light
-        cp ${DOTFILES}/alacritty/alacritty-light.yml ${HOME}/.config/alacritty/alacritty.yml
-        cp ${DOTFILES}/powerline/config-light.json ${HOME}/.config/powerline/config.json
+        cp -f ${DOTFILES}/alacritty/alacritty-light.yml ${HOME}/.config/alacritty/alacritty.yml
+        cp -f ${DOTFILES}/powerline/config-light.json ${HOME}/.config/powerline/config.json
         powerline-daemon --replace &> /dev/null &
 }
 
@@ -58,8 +58,8 @@ function set-color-dark() {
         echo "dark" > "${DOTFILES_COLORSCHEME_FILE}"
         # FIXME should check if tmux is running
         tmux set-environment -g TERMCOLOR dark
-        cp ${DOTFILES}/alacritty/alacritty-dark.yml ${HOME}/.config/alacritty/alacritty.yml
-        cp ${DOTFILES}/powerline/config-dark.json ${HOME}/.config/powerline/config.json
+        cp -f ${DOTFILES}/alacritty/alacritty-dark.yml ${HOME}/.config/alacritty/alacritty.yml
+        cp -f ${DOTFILES}/powerline/config-dark.json ${HOME}/.config/powerline/config.json
         powerline-daemon --replace &> /dev/null &
 }
 
@@ -72,4 +72,16 @@ function pet-select() {
   BUFFER=$(pet search --query "$READLINE_LINE")
   READLINE_LINE=$BUFFER
   READLINE_POINT=${#BUFFER}
+}
+
+function overleaf-sync() {
+        git fetch && git stash && git rebase && git stash pop
+}
+
+function make-ctags() {
+        rg --files | ctags -R --links=no -L - -f tags
+}
+
+function rsync-git() {
+        rsync -avhz --delete --exclude .git --filter=":- .gitignore" ./ $1
 }

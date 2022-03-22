@@ -113,23 +113,8 @@ export WINEPREFIX=~/.wine32
 ### Aliases ###################################################################
 
 # Command aliases
-alias ls='ls --color=auto'
-alias lsa='ls -a --color=auto'
-alias lsl='ls -lh --color=auto'
-alias lsla='ls -alh --color=auto'
-alias mv='nocorrect mv -i'
-alias cp='nocorrect cp -i'
-alias rm='rm -i'
-alias rmf='rm -f'
-alias make='make -j9'
-alias grep='grep --color=auto'
 alias remind='remind ~/.reminders'
-alias vim='vim -p'
-alias df='df -h'
-alias du='du -h'
-alias bc='bc -l'
 alias t='todo.sh'
-alias less='less -r'
 alias eb='python2 ~/AWS-ElasticBeanstalk-CLI-2.6.0/eb/linux/python2.7/eb'
 alias gcalcli='gcalcli --configFolder ~/.config/gcalcli'
 #alias pdflatex='pdflatex --output-directory=/tmp'

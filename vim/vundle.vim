@@ -28,6 +28,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'DataWraith/auto_mkdir'
 Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
+Plugin 'git-time-metric/gtm-vim-plugin'
 
 " Python stuff
 "Plugin 'klen/python-mode'
@@ -43,6 +44,9 @@ Plugin 'marijnh/tern_for_vim'
 " Markdown stuff
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+
+" Golang
+Plugin 'fatih/vim-go'
 
 Plugin 'lervag/vimtex'
 

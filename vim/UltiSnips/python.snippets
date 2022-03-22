@@ -1,0 +1,12 @@
+extends python
+
+snippet fix "pytest fixture" b
+@pytest.fixture(${1})
+def ${2}():
+    ${3}
+endsnippet
+
+snippet test "pytest test" b
+def test_${1}(${2}):
+    ${3}
+endsnippet

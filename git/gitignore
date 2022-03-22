@@ -28,3 +28,14 @@ venv
 .DS_Store
 *.swp
 .ipynb_checkpoints
+.gtm
+
+# latex
+*.aux
+*.fdb_latexmk
+*.synctex.gz
+*.tdo
+*.toc
+*.fls
+.coverage.AdministorsMBP2.in.atomics.info.44427.617621
+.vscode

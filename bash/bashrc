@@ -1,6 +1,8 @@
 export DOTFILES="${HOME}/.dotfiles"
 source "${DOTFILES}/sh/profile.sh"
 
+set -o vi
+bind '"jk":vi-movement-mode'
 bind -x '"\C-x\C-r": pet-select'
 
 # OS specific setups
@@ -32,8 +34,6 @@ alias pd='pushd'
 #alias pyjson='python -mjson.tool'
 alias grep='grep --color=auto'
 
-export LESS='-R'
-
 # Set key bindings to vi style
 set -o vi
 
@@ -52,7 +52,7 @@ POWERLINE_BASH_CONTINUATION=1
 POWERLINE_BASH_SELECT=1
 # TODO Need more universal way to identify source location
 # OSX location is different than XDG specs
-source ~/anaconda/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+source /usr/local/lib/python3.9/site-packages/powerline/bindings/bash/powerline.sh
 
 function cpcd() { cp -i $1 $2 && cd $2; }
 function mkdircd () { mkdir -p "$@" && eval cd "\"\$$#\""; }

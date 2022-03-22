@@ -14,12 +14,18 @@ fi
 
 # Set default Python user location
 export PYTHON3_USER_LIB="$(python3 -c 'import site; print(site.USER_SITE)')"
+export PYTHON3_SITE_LIB="$(python3 -c 'import site; print(site.PREFIXES[1])')/lib/python3.9/site-packages"
 export PATH="${PYTHON3_USER_LIB}/../../../bin:${PATH}"
 
 # Load z
 source "${DOTFILES}/vendor/z/z.sh"
 # Load marker
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+# Settings for less
+export LESS="--raw-control-chars --no-init --quit-if-one-screen"
+
+export FZF_DEFAULT_COMMAND="rg --files"
 
 source ${DOTFILES}/sh/aliases.sh
 source ${DOTFILES}/sh/functions.sh

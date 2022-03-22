@@ -43,7 +43,7 @@ endif
 " ack.vim
 let g:ackprg = "rg --vimgrep"
 
-set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,tags,*.class
+set wildignore+=*/tmp/*,*/data/*,*.so,*.swp,*.zip,*.csv,*.pyc,*.class
 
 " Goyo
 function! s:goyo_enter()
@@ -83,7 +83,7 @@ let g:tagbar_type_markdown = {
 let NERDTreeIgnore=['.pyc$', '^__pycache__$']
 
 " ctags
-set tags=./tags,../tags,../../tags
+set tags=./tags,tags
 let g:easytags_dynamic_files = 1
 let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
@@ -96,6 +96,7 @@ let g:ultisnips_python_triple_quoting_style="double"
 let g:UltiSnipsExpandTrigger="<C-j>"
 let g:UltiSnipsJumpForwardTrigger="<C-l>"
 let g:UltiSnipsJumpBackwardTrigger="<C-k>"
+let g:ultisnips_python_style="google"
 
 " eclim
 let g:EclimCompletionMethod = 'omnifunc'
@@ -195,6 +196,7 @@ let @a = ''
 endfunction
 
 map <C-p> :FZF<CR>
+let g:fzf_tags_command = 'rg --files | ctags -R --links=no -L -'
 
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
