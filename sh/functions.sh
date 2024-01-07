@@ -1,7 +1,14 @@
 # Usage: activate
 # Description: activates python virtualenv
 function activate {
-        source venv/bin/activate
+        if [ -d ".venv" ]; then
+                source .venv/bin/activate
+        elif [ -d "venv" ]; then
+                source venv/bin/activate
+        else
+                echo "Could not find a virtualenv directory: \{.venv, venv\}"
+                exit 1
+        fi
 }
 
 # Usage: extract <file>
@@ -84,4 +91,8 @@ function make-ctags() {
 
 function rsync-git() {
         rsync -avhz --delete --exclude .git --filter=":- .gitignore" ./ $1
+}
+
+function scratch() {
+        vim ${HOME}/notes/scratch.md
 }

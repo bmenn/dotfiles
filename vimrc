@@ -36,9 +36,9 @@ let g:vim_markdown_folding_disabled = 1
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion=1
 let g:ycm_server_keep_logfiles = 1
-if has('macunix')
-    let g:ycm_path_to_python_interpreter = '/usr/local/bin/python3'
-endif
+" if has('macunix')
+"     let g:ycm_path_to_python_interpreter = 'python3'
+" endif
 
 " ack.vim
 let g:ackprg = "rg --vimgrep"
@@ -88,6 +88,9 @@ let g:easytags_dynamic_files = 1
 let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 
+" delimitMate
+au FileType tex,plaintex let b:delimitMate_autoclose = 0
+
 " ultisnips
 let g:UltiSnipsSnippetDirectories=["bundle/vim-snippets/UltiSnips", $HOME."/.vim/UltiSnips"]
 let g:UltiSnipsSnippetDir=$HOME."/.vim/UltiSnips"
@@ -107,7 +110,11 @@ set conceallevel=1
 let g:tex_flavor = "xelatex"
 let g:tex_conceal = "abdmg"
 " TODO This needs to be cross platform
-let g:vimtex_view_method = "zathura"
+if has("zathura")
+    let g:vimtex_view_method = "zathura"
+elseif has("skimpdf")
+    let g:vimtex_view_method = "skim"
+endif
 let g:vimtex_compiler_latexrun_engines = {
     \ '_': '-xelatex',
     \ 'pdflatex': '-pdflatex',

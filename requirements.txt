@@ -1,4 +1,4 @@
-ansible==2.6.18
-powerline-status==2.6
+ansible
+powerline-status
 awscli
 unidecode  # For vim YouCompleteMe

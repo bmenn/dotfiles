@@ -1,17 +1,9 @@
-export PATH="$HOME/Library/Python/3.6/bin:${PATH}"
-export PATH="$HOME/Library/Python/2.7/bin:${PATH}"
-export PATH="/opt/local/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH="/opt/local/Library/Frameworks/Python.framework/Versions/Current/bin:${PATH}"
+export HOMEBREW_PREFIX="$(brew config | grep HOMEBREW_PREFIX | cut -f 2 -d ' ')"
 
 # Setting path for mysql
-export PATH="/usr/local/mysql/bin:${PATH}"
-export DYLD_LIBRARY_PATH="/usr/local/mysql/lib:${DYLD_LIBRARY_PATH}"
-export LDFLAGS="-L/usr/local/lib"
-
-# Place GNU version of coreutils in the path before the BSD versions
-# From macports
-[ -d "/opt/local/libexec/gnubin" ] && export PATH="/opt/local/libexec/gnubin:${PATH}"
-[ -d "/usr/local/opt/findutils/libexec/gnubin" ] && export PATH="/usr/local/opt/findutils/libexec/gnubin:${PATH}"
+export PATH="${HOMEBREW_PREFIX}/mysql/bin:${PATH}"
+export DYLD_LIBRARY_PATH="${HOMEBREW_PREFIX}/mysql/lib:${DYLD_LIBRARY_PATH}"
+export LDFLAGS="-L${HOMEBREW_PREFIX}/lib"
 
 # ... BSD sed was misbehaving, use GNU sed from macports by default
 # Other bsd commands aliased-over with GNU version of commands here
@@ -33,4 +25,4 @@ function dot-hide() {
 }
 
 # bash-completions
-source /usr/local/etc/bash_completion.d/*
+source ${HOMEBREW_PREFIX}/etc/bash_completion.d/*

@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 # TODO Add git submodule init and update
 DOTFILES="${HOME}/.dotfiles"
@@ -24,22 +24,21 @@ lnif() {
 }
 
 # Install homebrew (automatically) if it's not installed already
-[ -f "$(which brew)" ] || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" < /dev/null
+# [ -f "$(which brew)" ] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Install brew packages from Brewfile
-brew tap Homebrew/bundle
-brew tap caskroom/versions
-brew bundle
+brew bundle --file homebrew/Brewfile
 
 # Install Python3 from Anaconda
- curl -L -o ${HOME}/anaconda.sh https://repo.continuum.io/archive/Anaconda3-5.1.0-MacOSX-x86_64.sh
-[ -d "${HOME}/anaconda/bin" ] || bash ${HOME}/anaconda.sh -b -p ${HOME}/anaconda
-export PATH="${HOME}/anaconda/bin:${PATH}"
+# curl -L -o ${HOME}/anaconda.sh https://repo.continuum.io/archive/Anaconda3-5.1.0-MacOSX-x86_64.sh
+# [ -d "${HOME}/anaconda/bin" ] || bash ${HOME}/anaconda.sh -b -p ${HOME}/anaconda
+# export PATH="${HOME}/anaconda/bin:${PATH}"
 
 # Install universal Python packages
 # Cannot install from requirements because qtpy conflicts with ansible
 # conda install --yes -c conda-forge --file ${DOTFILES}/requirements.txt
-conda install -y -c conda-forge powerline-status
+# conda install -y -c conda-forge powerline-status
 
 # tmux
 lnif ${DOTFILES}/tmux/tmux.conf ${HOME}/.tmux.conf
@@ -67,12 +66,9 @@ if [ ! -e ${HOME}/.vim/bundle/Vundle.vim/autoload ]; then
 fi
 
 echo "Update/Install plugins using vundle"
-vim -u ${DOTFILES}/vimrc +BundleInstall! +BundleClean +qall
+/usr/bin/vim -u ${DOTFILES}/vimrc +BundleInstall! +BundleClean +qall
 
 # powerline
-# Install fonts via homebrew
-brew tap homebrew/cask-fonts
-brew cask install font-source-code-pro-for-powerline
 mkdir -p ${HOME}/.config
 lnif ${DOTFILES}/powerline ${HOME}/.config/powerline
 

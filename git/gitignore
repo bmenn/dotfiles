@@ -38,4 +38,4 @@ venv
 *.toc
 *.fls
 .coverage.AdministorsMBP2.in.atomics.info.44427.617621
-.vscode
+tmp

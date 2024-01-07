@@ -6,6 +6,7 @@
 	excludesfile = ~/.gitignore
 [push]
 	default = simple
+        autoSetupRemote = true
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
@@ -31,16 +32,21 @@
         path = ~/.gitconfig_local
 [init]
 	defaultBranch = master
-[diff "jupyternotebook"]
-	command = git-nbdiffdriver diff
-[merge "jupyternotebook"]
-	driver = git-nbmergedriver merge %O %A %B %L %P
-	name = jupyter notebook merge driver
+# [diff "jupyternotebook"]
+# 	command = git-nbdiffdriver diff
+# [merge "jupyternotebook"]
+# 	driver = git-nbmergedriver merge %O %A %B %L %P
+# 	name = jupyter notebook merge driver
 [difftool "nbdime"]
 	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
 [difftool]
 	prompt = false
 [mergetool "nbdime"]
-	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+	cmd = git-nbmergetool merge --merge-strategy inline \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
 [mergetool]
 	prompt = false
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver

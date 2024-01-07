@@ -28,7 +28,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'DataWraith/auto_mkdir'
 Plugin 'tpope/vim-surround'
 Plugin 'mileszs/ack.vim'
-Plugin 'git-time-metric/gtm-vim-plugin'
+" Plugin 'git-time-metric/gtm-vim-plugin'
 
 " Python stuff
 "Plugin 'klen/python-mode'
